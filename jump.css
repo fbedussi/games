@@ -1,0 +1,35 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body, #field {
+    width: 100%;
+    height: 100%;
+}
+
+#field {
+    position: relative;
+}
+
+#hero {
+    position: absolute;
+    width: 3vh;
+    height: 9vh;
+    left: 18vh;
+    bottom: 3vh;
+    background: red;
+}
+
+#hero.jump {
+    bottom: 6vh;
+}
+
+#ground {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 3vh;
+    background: black;
+}
