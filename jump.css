@@ -10,6 +10,7 @@ html, body, #field {
 
 #field {
     position: relative;
+    overflow: hidden;
 }
 
 #hero {
@@ -32,4 +33,13 @@ html, body, #field {
     width: 100%;
     height: 3vh;
     background: black;
+}
+
+.hole {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 3vh;
+    height: 3vh;
+    background: white;
 }
