@@ -12,31 +12,26 @@
                 var d = document.createElement("div");
                 d.className = 'hole';
                 d.style.width = l+'%';
+                d.style.right = '-' + l + '%';
                 field.appendChild(d);
             }
-            
             [].forEach.call(holes,function(hole){
-                hole.style.transform = 'translateX(' + (hole.getBoundingClientRect().right - window.innerWidth - 5) + 'px)';
-            
+                hole.style.transform = 'translateX(' + (hole.getBoundingClientRect().right - hole.getBoundingClientRect().width - window.innerWidth - 5) + 'px)';
                 if (!hero.classList.contains('jump') && hole.getBoundingClientRect().left < hero.getBoundingClientRect().left && hole.getBoundingClientRect().right > hero.getBoundingClientRect().right) {
-                    gameOver = true;
+                    field.classList.add('gameOver');
                 }
-                
                 if (hole.getBoundingClientRect().left + hole.getBoundingClientRect().width < 0) {
                     field.removeChild(hole);
                     holesJumped++;
                 }
             });
-            
-            if (gameOver) {
-                field.classList.add('gameOver');
-            } else {
+            if (!field.classList.contains('gameOver')) {
                 window.requestAnimationFrame(game);
             }  
         },speed -=speedIncrement);
-    })()
+    })();
     document.addEventListener('keyup', function (e) {
         hero.classList.add('jump');
         setTimeout(function(){hero.classList.remove('jump');}, jumpDuration);
     }, false);
-})(33, 500, 0.01,15,0.8);
+})(33, 1100, 0.01,14,0.8);
