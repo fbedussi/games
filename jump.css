@@ -13,6 +13,26 @@ html, body, #field {
     overflow: hidden;
 }
 
+.gameOver_message {
+    position: absolute;
+    left: 0;
+    top: 45%;
+    width: 100%;
+    height: 10%;
+    text-align: center;
+    background: black;
+    color: white;
+    text-transform: uppercase;
+    opacity: 0;
+    transition: opacity 0.3s;
+    display: table;
+}
+
+.gameOver_message span {
+    vertical-align: middle;
+    display: table-cell;
+}
+
 #hero {
     position: absolute;
     width: 3vh;
@@ -20,6 +40,7 @@ html, body, #field {
     left: 18vh;
     bottom: 3vh;
     background: red;
+    z-index: 1;
 }
 
 #hero.jump {
@@ -42,4 +63,12 @@ html, body, #field {
     width: 3vh;
     height: 3vh;
     background: white;
+}
+
+.gameOver #hero {
+    bottom: 0;
+}
+
+.gameOver .gameOver_message {
+    opacity: 1;
 }
