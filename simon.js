@@ -3,6 +3,10 @@
        return document.getElementById('l'+id); 
     });
     
+    var containerEl = document.getElementById('container');
+    
+    containerEl.style.width = containerEl.getBoundingClientRect().height + 'px';
+    
     function addElement(sequence) {
         sequence.push(Math.floor(Math.random()*4));
         return sequence;
@@ -17,12 +21,12 @@
             setTimeout(function(){
                 lights[sequence[sequencePos]].classList.remove('on');
                 
-                if (sequencePos < sequence.length-1) {
-                    lights[sequence[sequencePos]].addEventListener('transitionend', function nextLight(){
-                        lights[sequence[sequencePos]].removeEventListener(nextLight);
+                lights[sequence[sequencePos]].addEventListener('transitionend', function nextLight(){
+                    lights[sequence[sequencePos]].removeEventListener(nextLight);
+                    if (sequencePos < sequence.length-1) {
                         lightOn(++sequencePos);
-                    });
-                }
+                    }
+                });
             },lightDuration);
         })(0);
         
