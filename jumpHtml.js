@@ -1,9 +1,13 @@
-(function(speed, jumpDuration, speedIncrement, holeMaxLength, holesGap){
+(function(speed, speedIncrement, animationStep, holeMaxLength, holesGap){
     var hero = document.getElementById('hero'),
         field = document.getElementById('field'),
         display = document.getElementById('display'),
+        jumpDuration,
         holesJumped = 0, gameOver = false;
     (function game () {
+        var maxLengthPx = window.innerWidth*holeMaxLength/100;
+        var maxCicles = maxLengthPx/animationStep;
+        jumpDuration = maxCicles * speed;
         setTimeout(function(){
             display.innerHTML = holesJumped;
             var l = Math.random()*holeMaxLength;
@@ -16,7 +20,7 @@
                 field.appendChild(d);
             }
             [].forEach.call(holes,function(hole){
-                hole.style.transform = 'translateX(' + (hole.getBoundingClientRect().right - hole.getBoundingClientRect().width - window.innerWidth - 5) + 'px)';
+                hole.style.transform = 'translateX(' + (hole.getBoundingClientRect().right - hole.getBoundingClientRect().width - window.innerWidth - animationStep) + 'px)';
                 if (!hero.classList.contains('jump') && hole.getBoundingClientRect().left < hero.getBoundingClientRect().left && hole.getBoundingClientRect().right > hero.getBoundingClientRect().right) {
                     field.classList.add('gameOver');
                 }
@@ -34,4 +38,4 @@
         hero.classList.add('jump');
         setTimeout(function(){hero.classList.remove('jump');}, jumpDuration);
     }, false);
-})(33, 1100, 0.01,14,0.8);
+})(33, 0.01, 5, 14,0.8);

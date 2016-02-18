@@ -11,6 +11,8 @@ html, body, #field {
 #field {
     position: relative;
     overflow: hidden;
+    background: url('background.png') center bottom no-repeat;
+    background-size: cover;
 }
 
 .gameOver_message {
@@ -39,8 +41,9 @@ html, body, #field {
     height: 9vh;
     left: 18vh;
     bottom: 3vh;
-    background: red;
     z-index: 1;
+    background: url('hero.png') center bottom no-repeat;
+    background-size: contain;
 }
 
 #hero.jump {
@@ -53,7 +56,7 @@ html, body, #field {
     bottom: 0;
     width: 100%;
     height: 3vh;
-    background: black;
+    background: url('ground.png') center top;
 }
 
 .hole {
@@ -62,7 +65,7 @@ html, body, #field {
     bottom: 0;
     width: 3vh;
     height: 3vh;
-    background: white;
+    background: #6b8cff;
 }
 
 .gameOver #hero {
