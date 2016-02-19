@@ -9,6 +9,10 @@ html, body, #container {
     height: 100%;
 }
 
+.hide {
+    display: none !important;
+}
+
 #container {
     margin: 0 auto;
 }
