@@ -72,8 +72,4 @@
             display.className = 'start';
         }
     });
-
-    //document.getElementById('replay').addEventListener('click', function(){lightOn(0);});
-    
-    //game();
 })([], [], 700);
