@@ -46,7 +46,7 @@ html, body, #container {
     transition: background-color 0.2s;
 }
 
-.light.on::after, .light:active::after {
+.light.on::after, .playerTurn .light:active::after {
     background-color: rgba(0, 0, 0, 0); 
 }
 
@@ -82,15 +82,15 @@ html, body, #container {
     transition: background-color 0.2s;
 }
 
-#display.on {
+.playerTurn #display {
     background-color: yellow;
 }
 
-#display.fail {
+.fail #display {
     background-color: red;
 }
 
-#display.pass {
+.pass #display {
     background-color: green;
 }
 
@@ -124,22 +124,22 @@ html, body, #container {
     font-size: 3rem;
 }
 
-#display.start #start {
+.start #start {
     opacity: 1;
 }
 
-#display:not(.stat) #points {
+#container:not(.stat) #points {
     opacity: 1;
 }
 
-#display.on #yourTurn {
+.playerTurn #yourTurn {
     opacity: 1;
 }
 
-#display.fail #fail {
+.fail #fail {
     opacity: 1;
 }
 
-#display.pass #pass {
+.pass #pass {
     opacity: 1;
 }

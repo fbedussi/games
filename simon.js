@@ -8,25 +8,24 @@
     var points = document.getElementById('points');
     
     containerEl.style.width = containerEl.getBoundingClientRect().height + 'px';
-    //display.className = '';
 
     function getUserInput(e) {
-        if (display.className !== 'on') {
+        if (containerEl.className !== 'playerTurn') {
             return;
         }
         
         userSequence.push(parseInt(e.target.id.substr(1,1)));
         
         if (userSequence[userSequence.length-1] !== sequence[userSequence.length-1]) {
-            display.className = 'fail';
+            containerEl.className = 'fail';
             return;
         }
         
         if (userSequence.length === sequence.length) {
-            display.className = 'pass';
+            containerEl.className = 'pass';
             points.innerHTML = sequence.length;
             setTimeout(function(){
-                display.className = '';
+                containerEl.className = '';
                 game();    
             },1000);
         }
@@ -42,7 +41,7 @@
                 if (sequencePos < sequence.length-1) {
                     lightOn(++sequencePos);
                 } else {
-                    display.className = 'on';
+                    containerEl.className = 'playerTurn';
                 }
             });
         },lightDuration);
@@ -52,24 +51,23 @@
         userSequence = [];
         sequence.push(Math.floor(Math.random()*4));
         lightOn(0);
-    }
-    
+    }   
     
     [].forEach.call(document.querySelectorAll('.light'), function(el) {
         el.addEventListener('click', getUserInput);          
     });
     
     display.addEventListener('click',function(e){
-        if (display.className === 'start') {
+        if (containerEl.className === 'start') {
             userSequence = [];
             sequence = [];
-            display.className = '';
+            containerEl.className = '';
             game();  
         }
         
-        if (display.className === 'fail' ) {
+        if (containerEl.className === 'fail' ) {
             points.innerHTML = '0';
-            display.className = 'start';
+            containerEl.className = 'start';
         }
     });
 })([], [], 700);
