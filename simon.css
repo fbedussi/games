@@ -7,6 +7,7 @@
 html, body, #container {
     width: 100%;
     height: 100%;
+    font-family: sans-serif;
 }
 
 .hide {
@@ -45,7 +46,7 @@ html, body, #container {
     transition: background-color 0.2s;
 }
 
-.light.on::after {
+.light.on::after, .light:active::after {
     background-color: rgba(0, 0, 0, 0); 
 }
 
@@ -67,4 +68,78 @@ html, body, #container {
 #l3 {
     border-radius:  0 0 100% 0;
     background: green;
+}
+
+#display {
+    width: 20vh;
+    height: 20vh;
+    position: absolute;
+    top: calc(50% - 10vh);
+    left: calc(50% - 10vh);
+    background-color: white;
+    border-radius: 50%;
+    text-align: center;
+    transition: background-color 0.2s;
+}
+
+#display.on {
+    background-color: yellow;
+}
+
+#display.fail {
+    background-color: red;
+}
+
+#display.pass {
+    background-color: green;
+}
+
+.displayInner {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#display p {
+    opacity: 0;
+    text-transform: uppercase;
+    transition: opacity 0.2s;
+}
+
+#display p:last-child {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+}
+
+#start {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    left: 0;
+}
+
+#points {
+    font-size: 3rem;
+}
+
+#display.start #start {
+    opacity: 1;
+}
+
+#display:not(.stat) #points {
+    opacity: 1;
+}
+
+#display.on #yourTurn {
+    opacity: 1;
+}
+
+#display.fail #fail {
+    opacity: 1;
+}
+
+#display.pass #pass {
+    opacity: 1;
 }
